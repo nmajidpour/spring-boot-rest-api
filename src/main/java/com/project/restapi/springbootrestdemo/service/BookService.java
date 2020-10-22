@@ -22,6 +22,11 @@ public class BookService implements IBook {
         return bookRepo.stream().filter(b -> genre.equalsIgnoreCase(b.getGenre())).collect(Collectors.toList());
     }
 
+    @Override
+    public void createBook(Book book) {  
+        bookRepo.add(book);
+    }
+
     private static List<Book> bookRepo = new ArrayList<Book>();
     static {
         bookRepo.add(new Book("1", "Alchemist", "Paulo Coelho", "Novel"));

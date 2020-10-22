@@ -7,4 +7,5 @@ import com.project.restapi.springbootrestdemo.model.Book;
 public interface IBook {
     public abstract List<Book> getAllBooks();  
     public abstract List<Book> getBooksByGenre(String genre); 
+    public abstract void createBook(Book book); 
 }
