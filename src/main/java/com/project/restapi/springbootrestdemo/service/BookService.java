@@ -26,6 +26,12 @@ public class BookService implements IBook {
     public void createBook(Book book) {  
         bookRepo.add(book);
     }
+    
+	@Override
+	public void updateBook(String id, Book book) {
+        int index = Integer.parseInt(id);
+        bookRepo.set(index, book);
+	}
 
     private static List<Book> bookRepo = new ArrayList<Book>();
     static {

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +37,11 @@ public class BookController {
     public void createBook(@RequestBody Book book) 
     {      
         bookService.createBook(book);
+    }
+
+    @PutMapping(value = "/books/{id}")
+    public void updateBook(@PathVariable("id") String id, @RequestBody Book book) 
+    {      
+        bookService.updateBook(id, book);
     }
 }
