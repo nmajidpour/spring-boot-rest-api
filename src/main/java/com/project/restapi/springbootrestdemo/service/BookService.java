@@ -28,10 +28,17 @@ public class BookService implements IBook {
     }
     
 	@Override
-	public void updateBook(String id, Book book) {
-        int index = Integer.parseInt(id);
-        bookRepo.set(index, book);
-	}
+	public void updateBook(String id, Book newBook) {
+        Book oldBook = bookRepo.stream().filter(b -> id.equalsIgnoreCase(b.getId())).findAny().get();
+        int index = bookRepo.indexOf(oldBook);
+        bookRepo.set(index, newBook);
+    }
+    
+    @Override
+    public void deleteBook(String id) {
+        Book book = bookRepo.stream().filter(b -> id.equalsIgnoreCase(b.getId())).findAny().get();
+        bookRepo.remove(book);
+    }
 
     private static List<Book> bookRepo = new ArrayList<Book>();
     static {
